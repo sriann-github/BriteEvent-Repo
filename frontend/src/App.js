@@ -1,11 +1,21 @@
-import Header from './Components/Header';
 import './bootstrap.css';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import HomeScreen from './screens/HomeScreen';
+import { Container } from 'react-bootstrap';
+
 
 function App() {
   return (
-
-    <Header />
-
+    <>
+      <Header />
+        <main>
+          <Container>
+            <HomeScreen />
+          </Container>
+        </main>
+      <Footer />
+      </>
   );
 }
 
