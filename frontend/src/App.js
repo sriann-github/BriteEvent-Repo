@@ -9,8 +9,8 @@ import { Container } from 'react-bootstrap';
 function App() {
   return (
     <>
-      <Header />
       <div class="flex-wrapper">
+      <Header />
         <main>
           <Container>
             <HomeScreen />

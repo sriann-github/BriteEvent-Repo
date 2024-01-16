@@ -14,13 +14,13 @@ code {
 
 .flex-wrapper {
   display: flex;
-  min-height: 93vh;
+  min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
 }
 
 a {
-  text-decoration:none;
+ text-decoration:none;
 }
 
 .copyright{
