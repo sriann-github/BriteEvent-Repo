@@ -1,4 +1,5 @@
 import './bootstrap.css';
+import './index.css';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import HomeScreen from './screens/HomeScreen';
@@ -8,6 +9,7 @@ import { Container } from 'react-bootstrap';
 function App() {
   return (
     <>
+      <div class="flex-wrapper">
       <Header />
         <main>
           <Container>
@@ -15,7 +17,8 @@ function App() {
           </Container>
         </main>
       <Footer />
-      </>
+      </div>
+    </>
   );
 }
 
