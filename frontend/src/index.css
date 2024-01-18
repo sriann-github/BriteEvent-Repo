@@ -19,10 +19,6 @@ code {
   justify-content: space-between;
 }
 
-a {
- text-decoration:none;
-}
-
 .copyright{
   margin-top: 10px;
   font-size: 0.7em;
