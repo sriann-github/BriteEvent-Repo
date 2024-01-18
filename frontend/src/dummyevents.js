@@ -1,75 +1,75 @@
 const events = [
   {
     "id": "12345",
-    "name": "Test Event",
-    "description": "This is a test event",
+    "name": "Art Gallery Event: Come Display Your Work",
+    "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/artevent.jpg",
-    "location": "",
+    "location": "New York, New York",
     "online": "",
-    "start Date": "",
+    "start Date": "Sat, Mar 2, 8:30am",
     "end date": "",
     "organization name": "KAL Academy",
     "price": "5"
    },
    {
     "id": "7654",
-    "name": "Test Event 2",
-    "description": "This is a test event",
+    "name": "Baking Class: Guide to Healthy Cooking",
+    "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/baking.jpg",
-    "location": "",
+    "location": "The Pacific Ocean",
     "online": "",
-    "start Date": "",
+    "start Date": "Sat, Mar 2, 8:30am",
     "end date": "",
     "organization name": "KAL Academy",
-    "price": "5"
+    "price": "free"
    },
    {
     "id": "12345",
-    "name": "Test Event",
-    "description": "This is a test event",
+    "name": "Art Gallery Event: Come Display Your Work",
+    "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/artevent.jpg",
-    "location": "",
+    "location": "New York, New York",
     "online": "",
-    "start Date": "",
+    "start Date": "Sat, Mar 2, 8:30am",
     "end date": "",
     "organization name": "KAL Academy",
     "price": "5"
    },
    {
     "id": "7654",
-    "name": "Test Event 2",
-    "description": "This is a test event",
+    "name": "Baking Class: Guide to Healthy Cooking",
+    "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/baking.jpg",
-    "location": "",
+    "location": "The Pacific Ocean",
     "online": "",
-    "start Date": "",
+    "start Date": "Sat, Mar 2, 8:30am",
     "end date": "",
     "organization name": "KAL Academy",
-    "price": "5"
+    "price": "free"
    },
    {
     "id": "12345",
-    "name": "Test Event",
-    "description": "This is a test event",
+    "name": "Art Gallery Event: Come Display Your Work",
+    "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/artevent.jpg",
-    "location": "",
+    "location": "New York, New York",
     "online": "",
-    "start Date": "",
+    "start Date": "Sat, Mar 2, 8:30am",
     "end date": "",
     "organization name": "KAL Academy",
     "price": "5"
    },
    {
     "id": "7654",
-    "name": "Test Event 2",
-    "description": "This is a test event",
+    "name": "Baking Class: Guide to Healthy Cooking",
+    "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/baking.jpg",
-    "location": "",
+    "location": "The Pacific Ocean",
     "online": "",
-    "start Date": "",
+    "start Date": "Sat, Mar 2, 8:30am",
     "end date": "",
     "organization name": "KAL Academy",
-    "price": "5"
+    "price": "free"
    }
 ]
 export default events
