@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card} from 'react-bootstrap'
 
-const Events = ({event}) => {
+const Event = ({event}) => {
   return (
     <Card className= 'my-5 p-3 rounded'>
       <Card.Img src={event.image} variant='top'/>
@@ -26,4 +26,4 @@ const Events = ({event}) => {
   )
 }
 
-export default Events
+export default Event
