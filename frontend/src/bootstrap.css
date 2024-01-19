@@ -4455,6 +4455,10 @@ textarea.form-control-lg {
   background-clip: border-box;
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
+  transition: box-shadow 0.3s;
+}
+.card:hover {
+  box-shadow: 3px 3px 10px rgb(221, 221, 221); 
 }
 .card > hr {
   margin-right: 0;
