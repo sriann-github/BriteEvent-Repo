@@ -12,20 +12,18 @@ import React from 'react'
 function App() {
   return (
     <>
-      <div class="flex-wrapper">
       <Router>
-        <Header />
-          <main>
-            <Container>
+          <Header />
+            <main>
+             <Container fluid className="px-0">
               <Routes>
-                <Route path='/' exact element= {< HomeScreen />} />
+                <Route path='/' exact element= {<HomeScreen />} />
                 <Route path='/event/:id' exact element= {<EventScreen />}/> 
               </Routes> 
-            </Container>
-          </main>
-        <Footer />
-      </Router>
-      </div>
+             </Container>
+            </main>
+          <Footer />
+        </Router>
     </>
   );
 }
