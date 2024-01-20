@@ -24,7 +24,7 @@ const events = [
     "price": "free"
    },
    {
-    "id": "12345",
+    "id": "45577",
     "name": "Art Gallery Event: Come Display Your Work",
     "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/artevent.jpg",
@@ -36,7 +36,7 @@ const events = [
     "price": "5"
    },
    {
-    "id": "7654",
+    "id": "234567",
     "name": "Baking Class: Guide to Healthy Cooking",
     "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/baking.jpg",
@@ -48,7 +48,7 @@ const events = [
     "price": "free"
    },
    {
-    "id": "12345",
+    "id": "86544",
     "name": "Art Gallery Event: Come Display Your Work",
     "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/artevent.jpg",
@@ -60,7 +60,7 @@ const events = [
     "price": "5"
    },
    {
-    "id": "7654",
+    "id": "9087867",
     "name": "Baking Class: Guide to Healthy Cooking",
     "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/baking.jpg",

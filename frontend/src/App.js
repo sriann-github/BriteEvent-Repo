@@ -1,10 +1,10 @@
 import './bootstrap.css';
 import './index.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import HomeScreen from './screens/HomeScreen';
-// import EventScreen from './screens/EventScreen';
+import EventScreen from './screens/EventScreen';
 import { Container } from 'react-bootstrap';
 import React from 'react'
 
@@ -15,12 +15,12 @@ function App() {
       <Router>
           <Header />
             <main>
-              <Container fluid className="px-0">
+             <Container fluid className="px-0">
               <Routes>
                 <Route path='/' exact element= {<HomeScreen />} />
-              {/* <Route path='/event/:id' exact element= {<EventScreen />}/> */} 
+                <Route path='/event/:id' exact element= {<EventScreen />}/> 
               </Routes> 
-              </Container>
+             </Container>
             </main>
           <Footer />
         </Router>

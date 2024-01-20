@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import React from 'react'
 import events from '../events'
-import EventHeader from "../Components/EventHeader"
 //import axios from 'axios'
 import {Card} from 'react-bootstrap'
 
@@ -24,7 +23,6 @@ const EventScreen = () => {
 
   return (
   <>
-    <EventHeader />
     <Card className='my-5 p-3 rounded'>
       <Card.Body>
         <Card.Title as='div'>
