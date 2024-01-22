@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 
 const Event = ({event}) => {
   return (
-    <Card className= 'border border-0 my-5 p-3 rounded btn-light'>
+    <Card className= 'border border-0 my-3 p-3 rounded btn-light'>
       <Card.Img src={event.image} variant='top'/>
       <Card.Body>
         <Card.Title as='div' className='mb-2'>
