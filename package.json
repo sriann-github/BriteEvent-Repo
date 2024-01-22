@@ -1,0 +1,22 @@
+{
+  "name": "briteevent",
+  "version": "1.0.0",
+  "description": "event brite app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sriann-github/BriteEvent-Repo.git"
+  },
+  "author": "Team2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sriann-github/BriteEvent-Repo/issues"
+  },
+  "homepage": "https://github.com/sriann-github/BriteEvent-Repo#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
