@@ -23,3 +23,14 @@ code {
   margin-top: 10px;
   font-size: 0.7em;
 }
+
+.icon-card{
+  width: 90px;
+  border: none;
+}
+.icon-title{
+  text-align: center;
+  font-size: 1em;
+  margin-top: 8px;
+  color: #4582ec;
+}
