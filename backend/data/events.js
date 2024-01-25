@@ -78,4 +78,4 @@ const events = [
     "numTickets":"3"
    }
 ]
-module.exports = events
+export default events

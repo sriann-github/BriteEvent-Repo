@@ -1,7 +1,11 @@
-const express = require('express')
-const events = require('./data/events')
+import express from 'express'
+import events from './data/events.js'
+import dotenv from 'dotenv'
+import connectDB from './config/db.js'
 
 const app = express()
+dotenv.config()
+connectDB()
 
 //When a request is submitted from the FE for a list of events, it's read here and a json object is returned as events
 app.get('/api/events', (req, res) => {
