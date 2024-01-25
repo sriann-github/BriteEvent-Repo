@@ -14,8 +14,8 @@ function App() {
     <>
       <Router>
           <Header />
-            <main>
-             <Container fluid className="px-0">
+            <main className="flex-wrapper">
+             <Container fluid>
               <Routes>
                 <Route path='/' exact element= {<HomeScreen />} />
                 <Route path='/event/:id' exact element= {<EventScreen />}/> 

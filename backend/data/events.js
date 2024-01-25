@@ -8,8 +8,9 @@ const events = [
     "online": "",
     "startDate": "Sat, Mar 2, 8:30am",
     "endDate": "",
-    "organization name": "KAL Academy",
-    "price": "5"
+    "organization": "KAL Academy",
+    "price": "5",
+    "numTickets":"4"
    },
    {
     "id": "7654",
@@ -20,8 +21,9 @@ const events = [
     "online": "",
     "startDate": "Sat, Mar 2, 8:30am",
     "endDate": "",
-    "organization name": "KAL Academy",
-    "price": "free"
+    "organization": "KAL Academy",
+    "price": "free",
+    "numTickets":"6"
    },
    {
     "id": "45577",
@@ -32,8 +34,9 @@ const events = [
     "online": "",
     "startDate": "Sat, Mar 2, 8:30am",
     "endDate": "",
-    "organization name": "KAL Academy",
-    "price": "5"
+    "organization": "KAL Academy",
+    "price": "5",
+    "numTickets":"3"
    },
    {
     "id": "234567",
@@ -44,8 +47,9 @@ const events = [
     "online": "",
     "startDate": "Sat, Mar 2, 8:30am",
     "endDate": "",
-    "organization name": "KAL Academy",
-    "price": "free"
+    "organization": "KAL Academy",
+    "price": "free",
+    "numTickets":"5"
    },
    {
     "id": "86544",
@@ -56,8 +60,9 @@ const events = [
     "online": "",
     "startDate": "Sat, Mar 2, 8:30am",
     "endDate": "",
-    "organization name": "KAL Academy",
-    "price": "5"
+    "organization": "KAL Academy",
+    "price": "5",
+    "numTickets":"13"
    },
    {
     "id": "9087867",
@@ -68,8 +73,9 @@ const events = [
     "online": "",
     "startDate": "Sat, Mar 2, 8:30am",
     "endDate": "",
-    "organization name": "KAL Academy",
-    "price": "free"
+    "organization": "KAL Academy",
+    "price": "free",
+    "numTickets":"3"
    }
 ]
 module.exports = events
