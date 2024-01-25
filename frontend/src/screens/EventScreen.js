@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
-import { Card } from 'react-bootstrap'
+import { Row, Container, ListGroup, Col, Carousel, ListGroupItem } from 'react-bootstrap'
+
+
 
 const EventScreen = () => {
 
@@ -19,18 +21,38 @@ const EventScreen = () => {
   )
 
   return (
+
     <>
-        <Card className= 'my-5 p-3 rounded'>   
-         <Card.Img src={event.image} variant='top'/>       
-          <Card.Body>
-            <Card.Title as='div' className='mb-2'>
-              <strong>{event.name}</strong>
-            </Card.Title>          
-            <Card.Text>
-              <small>{event.location}</small>
-            </Card.Text>
-          </Card.Body>
-        </Card>
+      <Container fluid="xxl" className="px-md-5 my-4">
+        <Row>
+          <Col>
+            <Carousel className="w-40 mx-auto">
+              {/*May have to replace this with an array of Carousel.Item */}
+              <Carousel.Item>
+                <img src={event.image} alt="my image" className="d-flex w-100 h-30 rounded-5" />
+              </Carousel.Item>
+            </Carousel>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="px-md-5">
+           <ListGroup>
+            <ListGroupItem>
+              Start Date
+            </ListGroupItem>
+            <ListGroupItem>
+              Title
+            </ListGroupItem>
+            <ListGroupItem>
+              Description
+            </ListGroupItem>
+           </ListGroup>
+          </Col>
+          <Col>
+            {/*Ticket price display*/}
+          </Col>
+        </Row>
+      </Container>
     </>
 
    )
