@@ -1,26 +1,31 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Event = ({event}) => {
   return (
-    <Card className= 'border border-0 my-5 p-3 rounded btn-light'>
-      <Card.Img src={event.image} variant='top'/>
-      <Card.Body>
-        <Card.Title as='div' className='mb-2'>
-          <strong>{event.name}</strong>
-        </Card.Title>
-        <Card.Subtitle as='div' className='text-muted'>
-          {event['start Date']}
-        </Card.Subtitle>
-        <Card.Text>
-          <small>{event.location}</small>
-        </Card.Text>
-        <Card.Text>
-          {event.price}
-        </Card.Text>
-        <Card.Text className='text-muted'>
-          <small>{event.description}</small>
-        </Card.Text>
+    <Card className= 'border-0 my-3 p-3 rounded'>
+      <Link to={`/event/${event.id}`}>
+        <Card.Img src={event.image} variant='top'/>
+      </Link>
+      <Card.Body className='px-1'>
+        <Link to={`/event/${event.id}`}  class='text-secondary-emphasis text-decoration-none'>
+          <Card.Title as='div' className='mb-2 fw-bold lh-sm'>
+            {event.name}
+          </Card.Title>
+        </Link>
+          <Card.Text className='mb-0 lh-1'>
+          <small>{event['start Date']}</small>
+          </Card.Text>
+          <Card.Text className='text-muted mb-2 lh-1'>
+            <small>{event.location}</small>
+          </Card.Text>
+          <Card.Text className='mb-2'>
+            {event.price}
+          </Card.Text>
+          <Card.Text className='text-muted lh-1'>
+            <small>{event.description}</small>
+          </Card.Text>
       </Card.Body>
     </Card>
   )
