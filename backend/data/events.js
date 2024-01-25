@@ -72,4 +72,4 @@ const events = [
     "price": "free"
    }
 ]
-module.exports = events
+export default events
