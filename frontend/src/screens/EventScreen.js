@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
-import { Row, Container, ListGroup, Col, Carousel, ListGroupItem } from 'react-bootstrap'
+import { Row, Container, ListGroup, Col, Carousel, ListGroupItem, Card, Button } from 'react-bootstrap'
 
 
 
@@ -23,33 +23,56 @@ const EventScreen = () => {
   return (
 
     <>
-      <Container fluid="xxl" className="px-md-5 my-4">
-        <Row>
-          <Col>
-            <Carousel className="w-40 mx-auto">
-              {/*May have to replace this with an array of Carousel.Item */}
+      <Container fluid="xxl" className="px-md-5 my-4 pb-2">
+        <Row >
+          <Col sm={12}>
+            <Carousel className="event-hero">              
               <Carousel.Item>
-                <img src={event.image} alt="my image" className="d-flex w-100 h-30 rounded-5" />
+                <img src={event.image} alt="my image" />
               </Carousel.Item>
             </Carousel>
           </Col>
         </Row>
+      </Container>
+      <Container fluid="xxl" className="px-md-5">
         <Row>
-          <Col className="px-md-5">
-           <ListGroup>
-            <ListGroupItem>
-              Start Date
-            </ListGroupItem>
-            <ListGroupItem>
-              Title
-            </ListGroupItem>
-            <ListGroupItem>
-              Description
-            </ListGroupItem>
-           </ListGroup>
+          <Col sm={8} className='me-3' >
+            <ListGroup variant='flush' className="border border-0 ">     
+                <ListGroupItem className="border border-0 my-3">
+                  <h5> {event.startDate} </h5>
+                </ListGroupItem>
+                <ListGroupItem className='border border-0 my-3 fs-6'>
+                  <h3>{event.name}</h3>
+                </ListGroupItem>
+                <ListGroupItem className='border-0 fw-semibold fs-6'>
+                  <span>
+                    {event.description}
+                  </span>
+                </ListGroupItem>
+                <ListGroupItem className='mt-3 mx-5' >
+                 <h6> By {event.organization} </h6>
+                </ListGroupItem>
+                <ListGroupItem className="border border-0 my-5">
+                  <h5 className="fw-semibold">Location</h5>
+                  <span>{event.location} </span> 
+                </ListGroupItem>
+                <ListGroupItem>
+
+                </ListGroupItem>
+            </ListGroup>
           </Col>
-          <Col>
-            {/*Ticket price display*/}
+          <Col className=''>
+           <ListGroup>
+            <ListGroupItem className='text-center'> 
+                ${event.price}
+            </ListGroupItem>
+            <ListGroupItem>
+             <Row>
+              <Button variant="primary"> Get Tickets
+              </Button>
+             </Row>
+            </ListGroupItem>
+           </ListGroup>           
           </Col>
         </Row>
       </Container>
