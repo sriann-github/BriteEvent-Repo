@@ -1,5 +1,6 @@
 const events = [
   {
+    "id": "1",
     "name": "Art Gallery Event: Come Display Your Work",
     "description": "Get ready to whip up some delicious treats at our   Baking Bonanza, an online event where you can learn, share, and indulge in the art of baking",
     "image": "/images/artevent.jpg",
@@ -12,6 +13,7 @@ const events = [
     "numTickets":"4"
    },
    {
+    "id": "2",
     "name": "Baking Class: Guide to Healthy Cooking",
     "description": "Get ready to whip up some delicious treats at our   Baking Bonanza, an online event where you can learn, share, and indulge in the art of baking",
     "image": "/images/baking.jpg",
@@ -24,6 +26,7 @@ const events = [
     "numTickets":"6"
    },
    {
+    "id": "3",
     "name": "Art Gallery Event: Come Display Your Work",
     "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/artevent.jpg",
@@ -36,6 +39,7 @@ const events = [
     "numTickets":"3"
    },
    {
+    "id": "4",
     "name": "Baking Class: Guide to Healthy Cooking",
     "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/baking.jpg",
@@ -48,6 +52,7 @@ const events = [
     "numTickets":"5"
    },
    {
+    "id": "5",
     "name": "Art Gallery Event: Come Display Your Work",
     "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/artevent.jpg",
@@ -60,6 +65,7 @@ const events = [
     "numTickets":"13"
    },
    {
+    "id": "6",
     "name": "Baking Class: Guide to Healthy Cooking",
     "description": "This is a test event ohhuhrtho aorhihohf kjscnai ohuhaou kxnkjclj dsuhdamlh firh",
     "image": "/images/baking.jpg",

@@ -27,7 +27,7 @@ const EventScreen = () => {
         <Row >
           <Col sm={12}>
             <Carousel className="event-hero">              
-              <Carousel.Item>
+              <Carousel.Item className="text-center">
                 <img src={event.image} alt='event'/>
               </Carousel.Item>
             </Carousel>
