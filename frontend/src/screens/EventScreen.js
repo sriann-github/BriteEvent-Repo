@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
-import { Row, Container, ListGroup, Col, Carousel, ListGroupItem, Card, Button } from 'react-bootstrap'
+import { Row, Container, ListGroup, Col, Carousel, ListGroupItem, Button } from 'react-bootstrap'
 
 
 
@@ -28,7 +28,7 @@ const EventScreen = () => {
           <Col sm={12}>
             <Carousel className="event-hero">              
               <Carousel.Item>
-                <img src={event.image} alt="my image" />
+                <img src={event.image} alt='event'/>
               </Carousel.Item>
             </Carousel>
           </Col>
