@@ -15,7 +15,7 @@ const Event = ({event}) => {
           </Card.Title>
         </Link>
           <Card.Text className='mb-0 lh-1'>
-          <small>{event['start Date']}</small>
+          <small>{event.startDate}</small>
           </Card.Text>
           <Card.Text className='text-muted mb-2 lh-1'>
             <small>{event.location}</small>
