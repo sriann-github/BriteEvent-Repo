@@ -63,8 +63,8 @@ const EventScreen = () => {
           </Col>
           <Col className=''>
            <ListGroup>
-            <ListGroupItem className='text-center'> 
-                ${event.price}
+            <ListGroupItem className='text-center'>             
+              {event.price > 0 ? `${event.price}` : 'free'}
             </ListGroupItem>
             <ListGroupItem>
              <Row>
