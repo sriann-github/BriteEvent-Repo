@@ -11,7 +11,7 @@ const HomeScreen = () => {
   
   useEffect( () => {
     const fetchEvents = async () => {
-       const {data} = await axios.get('/api/events')
+       const {data} = await axios.get('/api/events/')
        setEvents(data)
     }
 
@@ -26,7 +26,7 @@ const HomeScreen = () => {
         <h3 className='mx-5'>Events in Your Area</h3>   
         <Row className='mx-3'>
             {events.map (e => (
-            <Col sm={12} md={6} lg={4} xl={3}>
+            <Col key={e._id} sm={12} md={6} lg={4} xl={3}>
               <Event event={e} />
             </Col>
             ))
