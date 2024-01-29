@@ -9,7 +9,7 @@ const Event = ({event}) => {
         <Card.Img src={event.image} variant='top'/>
       </Link>
       <Card.Body className='px-1'>
-        <Link to={`/event/${event.id}`}  class='text-secondary-emphasis text-decoration-none'>
+        <Link to={`/event/${event.id}`}  className='text-secondary-emphasis text-decoration-none'>
           <Card.Title as='div' className='mb-2 fw-bold lh-sm'>
             {event.name}
           </Card.Title>
