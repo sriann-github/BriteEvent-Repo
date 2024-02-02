@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import router from './routes/eventRoutes.js'
+import errorHandler from './middleware/errorMiddleware.js'
 
 const app = express()
 dotenv.config()
