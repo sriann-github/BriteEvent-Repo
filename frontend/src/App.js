@@ -18,7 +18,7 @@ function App() {
              <Container fluid>
               <Routes>
                 <Route path='/' exact element= {<HomeScreen />} />
-                <Route path='/event/:id' exact element= {<EventScreen />}/> 
+                <Route path='/events/:id' exact element= {<EventScreen />}/> 
               </Routes> 
              </Container>
             </main>

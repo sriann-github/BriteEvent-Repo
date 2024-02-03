@@ -21,7 +21,6 @@ const EventScreen = () => {
   )
 
   return (
-
     <>
       <Container fluid="xxl" className="px-md-5 my-4 pb-2">
         <Row >
