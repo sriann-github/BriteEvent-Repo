@@ -5,10 +5,10 @@ const eventListReducer = (state = {events: []}, action) =>
   switch(action.type)
   {
     case EVENT_LIST_REQUEST_INIT:
-      return {loading: true, products: []}
+      return {loading: true, events: []}
 
     case EVENT_LIST_REQUEST_SUCCESS:
-      return {loading: false, products: action.payload}
+      return {loading: false, events: action.payload}
 
     case EVENT_LIST_REQUEST_ERROR:
       return {loading: false, error: action.payload}
