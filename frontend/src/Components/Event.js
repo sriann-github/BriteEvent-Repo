@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 const Event = ({event}) => {
   return (
     <Card className= 'border-0 my-3 p-3 rounded'>
-      <Link to={`/event/${event.id}`}>
+      <Link to={`/events/${event.id}`}>
         <Card.Img src={event.image} variant='top'/>
       </Link>
       <Card.Body className='px-1'>
-        <Link to={`/event/${event.id}`}  className='text-secondary-emphasis text-decoration-none'>
+        <Link to={`/events/${event.id}`}  className='text-secondary-emphasis text-decoration-none'>
           <Card.Title as='div' className='mb-2 fw-bold lh-sm'>
             {event.name}
           </Card.Title>
