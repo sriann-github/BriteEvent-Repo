@@ -26,7 +26,7 @@ export const eventDetailsAction = (id) => async(dispatch) => {
     dispatch({
       type: EVENT_DETAILS_REQUEST_INIT
     })
-    const {data} = await axios.get(`api/events/${id}`)
+    const {data} = await axios.get(`/api/events/${id}`)
     
     dispatch({
       type: EVENT_DETAILS_REQUEST_SUCCESS,
