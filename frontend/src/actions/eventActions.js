@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {EVENT_LIST_REQUEST_INIT, EVENT_LIST_REQUEST_SUCCESS, EVENT_LIST_REQUEST_ERROR, EVENT_DETAILS_REQUEST_ERROR, EVENT_DETAILS_REQUEST_SUCCESS, EVENT_DETAILS_REQUEST_INIT} from '../constants/eventDispatcher'
 
-export const eventActions = () => async (dispatch) => {
+export const eventActions = () => async (dispatch) => {  
   try{
     dispatch({
       type: EVENT_LIST_REQUEST_INIT
