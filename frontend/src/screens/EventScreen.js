@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import { useSelector, useDispatch} from 'react-redux'
 import { Row, Container, ListGroup, Col, Carousel, ListGroupItem, Button } from 'react-bootstrap'
 import { eventDetailsAction } from '../actions/eventActions'
@@ -9,7 +9,8 @@ import Message from '../Components/Message'
 const EventScreen = () => {
 
   const params = useParams();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(eventDetailsAction(params.id))
@@ -18,6 +19,9 @@ const EventScreen = () => {
   const eventDetails = useSelector((state)=> state.eventDetails)
   const {loading, event, error} = eventDetails
 
+  const checkoutHandler = () =>{
+    navigate('/login?redirect=/payment')
+  }
   return (
     <>
      {
@@ -70,7 +74,11 @@ const EventScreen = () => {
               </ListGroupItem>
               <ListGroupItem>
               <Row>
-                <Button variant="primary"> Get Tickets
+                <Button 
+                variant="primary"
+                disabled= {event.numTickets === 0}
+                onClick = {checkoutHandler}
+                > Get Tickets
                 </Button>
               </Row>
               </ListGroupItem>
