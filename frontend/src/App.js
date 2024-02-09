@@ -7,6 +7,7 @@ import HomeScreen from './screens/HomeScreen';
 import EventScreen from './screens/EventScreen';
 import { Container } from 'react-bootstrap';
 import React from 'react'
+import LoginScreen from './screens/LoginScreen';
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
              <Container fluid>
               <Routes>
                 <Route path='/' exact element= {<HomeScreen />} />
-                <Route path='/event/:id' exact element= {<EventScreen />}/> 
+                <Route path='/event/:id' exact element= {<EventScreen />}/>
+                <Route path='/login' exact element= {<LoginScreen/>}/>
               </Routes> 
              </Container>
             </main>
