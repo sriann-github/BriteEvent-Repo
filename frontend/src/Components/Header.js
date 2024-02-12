@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Navbar, Nav, Button, Form, Col } from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 
 
 const Header = () => {
@@ -8,7 +9,11 @@ const Header = () => {
     <Container fluid className="px-0">
       <header>
         <Navbar expand="md" className="" data-bs-theme="light">
-          <Navbar.Brand className="fw-bold text-danger px-2 m-0" href="/">BriteEvent</Navbar.Brand>
+          <Navbar.Brand>
+            <Link className="fw-bold text-danger px-2 m-0 text-decoration-none" to='/'>
+            BriteEvent
+            </Link>
+          </Navbar.Brand>
           
           <Col>
             <Form className="flex-grow-1 p-0 bd-highlight">
