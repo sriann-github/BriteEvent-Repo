@@ -20,11 +20,11 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  useEffect((userLogin) => {
-      if (userLogin){
+  useEffect(() => {
+      if (userInfo){
       navigate(redirect)
       } 
-    }, [navigate,userInfo, redirect]
+    }, [navigate, userInfo, redirect]
   )
 
   const submitHandler = (e) => {
