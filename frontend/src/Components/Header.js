@@ -36,7 +36,7 @@ const Header = () => {
                 {/* Help center still needs dropdown window controls */}
                 <Nav.Link as={Button} variant="light" href='/help'>Help Center</Nav.Link>
                 <Nav.Link as={Button} variant="light" href='/login'>Log In</Nav.Link>
-                <Nav.Link as={Button} variant="light" href='/login/register'>Sign Up</Nav.Link>
+                <Nav.Link as={Button} variant="light" href='/register'>Sign Up</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -1,11 +1,12 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit'
 import {eventListReducer, eventDetailsReducer} from './reducers/eventReducer'
-import { userReducer } from './reducers/userReducer'
+import { userReducer, userRegisterReducer } from './reducers/userReducer'
 
 const rootReducer = combineReducers({
   eventsList: eventListReducer,
   eventDetails: eventDetailsReducer,
-  userLogin: userReducer
+  userLogin: userReducer,
+  userRegister: userRegisterReducer
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

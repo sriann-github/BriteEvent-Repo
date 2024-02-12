@@ -8,6 +8,7 @@ import EventScreen from './screens/EventScreen';
 import { Container } from 'react-bootstrap';
 import React from 'react'
 import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                 <Route path='/' exact element= {<HomeScreen />} />
                 <Route path='/event/:id' exact element= {<EventScreen />}/>
                 <Route path='/login' exact element= {<LoginScreen/>}/>
+                <Route path='/register' exact element= {<RegisterScreen/>}/>
               </Routes> 
              </Container>
             </main>
