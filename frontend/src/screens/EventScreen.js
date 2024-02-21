@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
 import { useSelector, useDispatch} from 'react-redux'
 import { Row, Container, ListGroup, Col, Carousel, ListGroupItem, Button } from 'react-bootstrap'
 import { eventDetailsAction } from '../actions/eventActions'
 import Loader from '../Components/Loader'
 import Message from '../Components/Message'
+import OrderScreen from './OrderScreen'
 
 const EventScreen = () => {
 
   const params = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(eventDetailsAction(params.id))
@@ -19,14 +19,17 @@ const EventScreen = () => {
   const eventDetails = useSelector((state)=> state.eventDetails)
   const {loading, event, error} = eventDetails
 
-  const checkoutHandler = () =>{
-    navigate('/login?redirect=/payment')
-  }
+ const [modalState, setModalState] = useState(false)
+
+ const toggleModal = () =>{
+  setModalState(!modalState)
+ }
+
   return (
     <>
      {
       loading? <Loader/>
-      :error? <Message variant='danger'>{error}</Message> 
+      :error? <Message variant='danger'>{error}</Message>
       :(
         <>
         <Container fluid="xxl" className="px-md-5 my-4 pb-2">
@@ -77,9 +80,10 @@ const EventScreen = () => {
                 <Button 
                 variant="primary"
                 disabled= {event.numTickets === 0}
-                onClick = {checkoutHandler}
+                onClick = {toggleModal}
                 > Get Tickets
                 </Button>
+                <OrderScreen showModal={modalState} closeModal={toggleModal}></OrderScreen>
               </Row>
               </ListGroupItem>
             </ListGroup>           
@@ -92,6 +96,7 @@ const EventScreen = () => {
 
    )
   }
+  
 
 
 export default EventScreen

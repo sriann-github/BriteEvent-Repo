@@ -15,5 +15,7 @@ app.use('/api/events', eventRoutes)
 
 app.use('/api/users', userRoutes)
 
+//app.use(`api/checkout`, checkoutRoute)
+
 app.use(errorHandler)
 app.listen(5000, console.log('Server is running on port 5000'))
