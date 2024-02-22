@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler'
+<<<<<<< HEAD
 import Order from '../models/orderModel.js'
 
 const addOrderItem = asyncHandler(async(req, res) => {
@@ -37,6 +38,19 @@ const getOrderById = asyncHandler(async(req, res) => {
   }else{
     res.status(404)
     throw new Error('Order not found')
+=======
+
+const getOrderDetails = asyncHandler(async(req, res) => {
+  const order = await Order.findById(req.params.id).populate(
+    'user',
+    'name email'
+  )
+  if (order){
+    res.json(order)
+  } else {
+    res.status(404)
+    throw new Error ('Order not found')
+>>>>>>> 09d919de6c3acb139e18d9a0ac81f6b72f476dd9
   }
 })
 
@@ -59,6 +73,10 @@ const updateOrderToPaid = asyncHandler(async(req, res) => {
   }
 })
 
+<<<<<<< HEAD
 
 export {addOrderItem, getOrderById, updateOrderToPaid}
 
+=======
+export {getOrderDetails, updateOrderToPaid}
+>>>>>>> 09d919de6c3acb139e18d9a0ac81f6b72f476dd9

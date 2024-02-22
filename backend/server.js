@@ -16,8 +16,11 @@ app.use('/api/events', eventRoutes)
 
 app.use('/api/users', userRoutes)
 
+<<<<<<< HEAD
 app.use('/api/orders', orderRoutes)
 
+=======
+>>>>>>> 09d919de6c3acb139e18d9a0ac81f6b72f476dd9
 app.get('/api/config/pay', (req, res) => 
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
