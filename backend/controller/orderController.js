@@ -3,19 +3,18 @@ import Order from '../models/orderModel.js'
 
 const addOrderItem = asyncHandler(async(req, res) => {
   const{
-    orderItem,
+    orderItems,
     paymentMethod,
-    fees,
+    taxPrice,
     totalPrice
   } = req.body
 
-  if(orderItem){
+  if(orderItems){
     const order = new Order({
-      orderItem,
+      orderItems,
       user: req.user._id,
       paymentMethod,
-      price,
-      fees,
+      taxPrice,
       totalPrice
     })
     const createOrder = await order.save()
@@ -23,7 +22,7 @@ const addOrderItem = asyncHandler(async(req, res) => {
   }
   else{
     res.status(400)
-    throw new Error('Bad request - No order item')
+    throw new Error('No order item')
   }  
 })
 
@@ -41,9 +40,9 @@ const getOrderById = asyncHandler(async(req, res) => {
   }
 })
 
-const updateOrderToPaid = asyncHandler(async (req, res) => {
+const updateOrderToPaid = asyncHandler(async(req, res) => {
   const order = await Order.findById(req.params.id)
-  if (order){
+  if(order){
     order.isPaid = true
     order.paidAt = Date.now()
     order.paymentResult = {
@@ -52,7 +51,6 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       update_time: req.body.update_time,
       email_address: req.body.email_address
     }
-
     const updatedOrder = await order.save()
     res.json(updatedOrder)
   } else {
@@ -63,3 +61,4 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
 
 export {addOrderItem, getOrderById, updateOrderToPaid}
+

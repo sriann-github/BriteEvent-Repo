@@ -1,4 +1,4 @@
-import {addOrderItem, getOrderById, updateOrderToPaid} from '..controllers/orderController'
+import {addOrderItem, getOrderById, updateOrderToPaid} from '..controllers/orderController.js'
 import {protect } from '../middleware/authMiddleware.js'
 import express from 'express'
 
