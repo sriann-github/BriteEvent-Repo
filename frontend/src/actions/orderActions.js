@@ -1,20 +1,7 @@
-<<<<<<< HEAD
 import { ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_DETAILS_FAIL,
   ORDER_PAY_REQUEST, ORDER_PAY_FAIL, ORDER_PAY_SUCCESS, PAYPAL_KEY  
 } from '../constants/orderDispatcher'
 import axios from 'axios'
-=======
-import {
-  ORDER_DETAILS_REQUEST,
-  ORDER_DETAILS_SUCCESS,
-  ORDER_DETAILS_FAIL,
-  ORDER_PAY_REQUEST,
-  ORDER_PAY_FAIL,
-  ORDER_PAY_SUCCESS,
-  ORDER_PAY_RESET,   
-  PAYPAL_KEY  
-} from '../constants/orderConstants'
->>>>>>> 09d919de6c3acb139e18d9a0ac81f6b72f476dd9
 
 export const getOrderDetails = (id) => async (dispatch, getState) =>{
 try{
@@ -80,7 +67,3 @@ export const getPaypalKey = () => async(dispatch) =>{
     payload: clientId
   })
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 09d919de6c3acb139e18d9a0ac81f6b72f476dd9
