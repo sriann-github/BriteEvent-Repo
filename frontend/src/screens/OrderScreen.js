@@ -1,35 +1,57 @@
 import {Modal, Row, Col, Container, Button, Card, Form} from 'react-bootstrap'
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
-import { useSelector, useDispatch} from 'react-redux'
+import { useSelector} from 'react-redux'
 import CheckoutScreen from './CheckoutScreen'
 import {selectTickets} from '../actions/orderActions'
+import LoginModalComponent from '../Components/LoginModalComponent'
+import IncrementDecrementComponent from '../Components/IncrementDecrementComponent'
 
 const OrderScreen = (props) =>
 {
-  const [qty, setQty] = useState(0);
+  const userLogin = useSelector((state) => state.userLogin)
+  const {userInfo} = userLogin
+  let userLoginPrompt = useRef(false)
 
-  const incrementCounter = () => {
-    setQty(qty + 1);
-  }
-
-  const decrementCounter = () => {
-    if (qty !== 0) {
-      setQty(qty - 1);
+  const checkUserInfo = () =>{
+    if(typeof userInfo === 'undefined')
+    {
+      userLoginPrompt.current = true
+      toggleLoginModal()
     }
   }
 
-  const [modalState, setModalState] = useState(false)
+  const [checkoutModalState, setCheckoutModalState] = useState(false)
 
-  const toggleModal = () =>{
-    setModalState(!modalState)
-  } 
+  const toggleCheckoutModal = () =>{
+    setCheckoutModalState(!checkoutModalState)
+  }
 
+  const userAlreadyLogggedIn = false
+
+  const checkoutControl = () => {
+    checkUserInfo()
+    if(userLoginPrompt === false)
+    {
+       userAlreadyLogggedIn = true
+    }
+    toggleCheckoutModal()
+    props.closeModal()
+  }
+
+  const [loginModalState, setLoginModalState] = useState(false)
+
+  const toggleLoginModal = () =>{
+    setLoginModalState(!loginModalState)
+  }
 
   return (
-    <>
+    <> 
+     {userLoginPrompt.current ? (<LoginModalComponent 
+      showLoginModal={loginModalState}
+      closeLoginModal={toggleLoginModal} />) : (
       <Modal 
-        show={props.showModal} 
+        show={props.showModal}
         onHide={props.closeModal}
         size="xxl"
         aria-labelledby="contained-modal-title-vcenter"
@@ -40,7 +62,7 @@ const OrderScreen = (props) =>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <Container>              
+            <Container>
               <Row>
                 <Col>
                   <Row>
@@ -54,31 +76,24 @@ const OrderScreen = (props) =>
                       </Card>
                     </Col>
                     <Col>
-                      <div className="ticket-options" >
-                        <Button onClick={incrementCounter}>
-                          <i class="fa-sharp fa-solid fa-plus"></i>
-                        </Button>
-                        <span className="number">{qty}</span>
-                        <Button onClick={decrementCounter}>
-                          <i class="fa-sharp fa-solid fa-minus"></i>
-                        </Button>
-                      </div>
+                      <IncrementDecrementComponent 
+                     />
                     </Col>
                   </Row>
                 </Col>              
               </Row>
           </Container>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={toggleModal}>
+       <Modal.Footer>
+        <Button 
+          variant="secondary" 
+          onClick={checkoutControl}>
             Check Out
-          </Button>
-          <CheckoutScreen 
-          showModal={modalState} 
-          closeModal={toggleModal}
-          qty = {qty} />
-        </Modal.Footer>
-     </Modal>
+        </Button>
+        {userAlreadyLogggedIn && <CheckoutScreen showModal={checkoutModalState} closeModal={toggleCheckoutModal}/>}
+       </Modal.Footer >
+     </Modal> )
+    }
     </>
   );
 } 
