@@ -1,20 +1,34 @@
-import {Modal, Row, Col, Container, Button, Card, Form} from 'react-bootstrap'
-import React, {useEffect, useState, useRef} from 'react'
-import {useNavigate, useParams} from 'react-router-dom'
-import { useSelector, useDispatch} from 'react-redux'
+import {Modal, Row, Col, Container, Button, Card } from 'react-bootstrap'
+import React, {useState, useRef} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import CheckoutScreen from './CheckoutScreen'
 import {selectTickets} from '../actions/ticketActions'
 import LoginModalComponent from '../Components/LoginModalComponent'
-import IncrementDecrementComponent from '../Components/IncrementDecrementComponent'
 
 const OrderScreen = (props) =>
 {
   const dispatch = useDispatch()
+  const eventDetails = useSelector((state)=> state.eventDetails)
+  const {event} = eventDetails
 
   const [qty, setQty] = useState(0);
   const userLogin = useSelector((state) => state.userLogin)
   const {userInfo} = userLogin
   let userLoginPrompt = useRef(false)
+
+  const incrementCounter = () => {
+    setQty(qty + 1)
+  }
+  const decrementCounter = () => {
+    if (qty !== 0) {
+      setQty(qty - 1)
+    }
+  } 
+  const [checkoutModalState, setCheckoutModalState] = useState(false)
+
+  const toggleCheckoutModal = () =>{
+    dispatch(selectTickets(qty))
+  }
 
   const checkUserInfo = () =>{
     if(typeof userInfo === 'undefined')
@@ -23,18 +37,7 @@ const OrderScreen = (props) =>
       toggleLoginModal()
     }
   }
-  const eventDetails = useSelector((state)=> state.eventDetails)
-  const {event} = eventDetails
-
-  const [checkoutModalState, setCheckoutModalState] = useState(false)
-
-  const toggleCheckoutModal = () =>{
-    dispatch(selectTickets(qty))
-    setCheckoutModalState(!checkoutModalState)
-  }
-
   const userAlreadyLogggedIn = false
-
   const checkoutControl = () => {
     checkUserInfo()
     if(userLoginPrompt === false)
@@ -72,7 +75,17 @@ const OrderScreen = (props) =>
                         <h6 className='mb-0'>General Admission</h6>
                     </Col>
                     <Col>
-                      <IncrementDecrementComponent />
+                    <Card>
+                      <div className="ticket-options" >
+                        <Button onClick={incrementCounter}>
+                          <i class="fa-sharp fa-solid fa-plus"></i>
+                        </Button>
+                        <span className="number">{qty}</span>
+                        <Button onClick={decrementCounter}>
+                          <i class="fa-sharp fa-solid fa-minus"></i>
+                        </Button>
+                      </div>
+                    </Card>
                     </Col>
                   </Row>
                   <Row className='mb-3'>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Button, Card} from 'react-bootstrap'
-import { selectTickets } from '../actions/orderActions';
+import { selectTickets } from '../actions/ticketActions';
 import {useDispatch} from 'react-redux'
 
 const IncrementDecrementComponent = () => {
