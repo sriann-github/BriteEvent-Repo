@@ -21,7 +21,7 @@ const Event = ({event}) => {
             <small>{event.location}</small>
           </Card.Text>
           <Card.Text className='mb-2'>
-            {event.price}
+            ${event.price}
           </Card.Text>
           <Card.Text className='text-muted lh-1'>
             <small>{event.description}</small>

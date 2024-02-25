@@ -7,7 +7,8 @@ const OrderSchema = mongoose.Schema(
       ref: 'users',
       required: true
     },
-    orderItem:{
+    orderItems:
+      {
       name: {type: String, required:true},
       qty: {type: Number, required:true},
       image: {type: String, required: true},
@@ -16,32 +17,36 @@ const OrderSchema = mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'events'
+        },
       },
+    paymentMethod: {
+      type: String,
+      required: true
     },
-
-    PaymentDetails: {
-      paymentMethod: {
-        type: String,
-        required: true
-      },
-      paymentResult:{
-        id: {type: String},
-        status:{type: String},
-        update_time: {type: String},
-        email_address: {type: String}
-      },
-      fees:{
-        type: Number,
-        required: true,
-        default: 0.0
-      },
-      totalPrice:{
-        type: Number,
-        required: true,
-        default: 0.0
-      }
-    }
-
+    paymentResult:{
+      id: {type: String},
+      status:{type: String},
+      update_time: {type: String},
+      email_address: {type: String}
+    },
+    taxPrice:{
+      type: Number,
+      required: true,
+      default: 0.0
+    },
+    totalPrice:{
+      type: Number,
+      required: true,
+      default: 0.0
+    },
+    isPaid:{
+      type:Boolean,
+      require:true,
+      default: false
+    },
+    paidAt:{
+      type:Date
+    },
   }
 )
 

@@ -54,42 +54,41 @@ const EventScreen = () => {
         <Container fluid="xxl" className="px-md-5">
           <Row>
             <Col sm={8} className='me-3' >
-              <ListGroup variant='flush' className="border    border-0 ">     
-                  <ListGroupItem className="border border-0 my-3">
+
+              <ListGroup variant='flush' className="border border-0 ">     
+                  <ListGroupItem className="border-0 mt-3 pb-0">
                     <h5> {event.startDate} </h5>
                   </ListGroupItem>
-                  <ListGroupItem className='border border-0 my-3 fs-6'>
-                    <h3>{event.name}</h3>
+                  <ListGroupItem className='border-0 py-0'>
+                    <h2>{event.name}</h2>
                   </ListGroupItem>
-                  <ListGroupItem className='border-0 fw-semibold fs-6'>
+                  <ListGroupItem className='mx-5 my-3' >
+                  <h6> By {event.organization} </h6>
+                  </ListGroupItem>
+                  <ListGroupItem className='border-0 fw-semibold'>
                     <span>
                       {event.description}
                     </span>
                   </ListGroupItem>
-                  <ListGroupItem className='mt-3 mx-5' >
-                  <h6> By {event.organization} </h6>
-                  </ListGroupItem>
-                  <ListGroupItem className="border border-0 my-5">
-                    <h5 className="fw-semibold">Location</h5>
-                    <span>{event.location} </span> 
-                  </ListGroupItem>
-                  <ListGroupItem>
-
+                  <ListGroupItem className="border-0 my-5">
+                    <h6>Location:</h6>
+                    <span className='fw-semibold'><i class="fa-solid fa-location-dot"></i> {event.location}</span> 
                   </ListGroupItem>
               </ListGroup>
             </Col>
-            <Col className=''>
+            <Col className='mt-3'>
             <ListGroup>
               <ListGroupItem className='text-center'>             
-                {event.price > 0 ? `${event.price}` : 'free'}
+                <span className='fw-semibold'>{event.price > 0 ? `$${event.price}` : 'free'}</span>
               </ListGroupItem>
               <ListGroupItem>
               <Row>
                 <Button 
-                  variant="primary"
-                  disabled= {event.numTickets === 0}
-                  onClick = {toggleModal}
-                  > Get Tickets
+                style={{backgroundColor:'#d1410c', borderColor:'#d1410c'}}
+                disabled= {event.numTickets === 0}
+                onClick = {toggleModal}
+                ><span className='fw-semibold'>Get Tickets</span>
+
                 </Button>
                 <OrderScreen showModal={modalState} closeModal={toggleModal}></OrderScreen>
               </Row>
