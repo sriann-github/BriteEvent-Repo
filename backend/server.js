@@ -18,7 +18,7 @@ app.use('/api/users', userRoutes)
 
 app.use('/api/orders', orderRoutes)
 
-app.get('/api/config/pay', (req, res) => 
+app.get('/api/config/paypal', (req, res) => 
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
 

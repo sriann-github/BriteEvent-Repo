@@ -7,7 +7,7 @@ const OrderSchema = mongoose.Schema(
       ref: 'users',
       required: true
     },
-    orderItems:[
+    orderItems:
       {
       name: {type: String, required:true},
       qty: {type: Number, required:true},
@@ -18,8 +18,7 @@ const OrderSchema = mongoose.Schema(
         required: true,
         ref: 'events'
         },
-      }
-    ],
+      },
     paymentMethod: {
       type: String,
       required: true
@@ -39,7 +38,15 @@ const OrderSchema = mongoose.Schema(
       type: Number,
       required: true,
       default: 0.0
-    }
+    },
+    isPaid:{
+      type:Boolean,
+      require:true,
+      default: false
+    },
+    paidAt:{
+      type:Date
+    },
   }
 )
 
