@@ -1,5 +1,5 @@
-import React, {useEffect, useState, useRef} from 'react'
-import {useNavigate, useParams} from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import { useParams} from 'react-router-dom'
 import { useSelector, useDispatch} from 'react-redux'
 import { Row, Container, ListGroup, Col, Carousel, ListGroupItem, Button } from 'react-bootstrap'
 import { eventDetailsAction } from '../actions/eventActions'
