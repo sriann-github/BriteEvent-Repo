@@ -1,6 +1,6 @@
-import {SELECT_TICKETS_INIT, SELECT_TICKETS_SUCCESS}  from '../constants/ticketDispatcher'
+import {SELECT_TICKETS_INIT, SELECT_TICKETS_SUCCESS, CART_SAVE_PAYMENT_METHOD}  from '../constants/ticketDispatcher'
 
-const ticketReducer = () => (state ={}, action) => {
+export const ticketReducer = (state = {}, action) => {
 
   switch(action.type){
     case SELECT_TICKETS_INIT:
@@ -10,11 +10,14 @@ const ticketReducer = () => (state ={}, action) => {
     case SELECT_TICKETS_SUCCESS:
       return{
         loading: false,
-        order: action.payload
+        tickets: action.payload
+      }
+    case CART_SAVE_PAYMENT_METHOD:
+      return{
+        ...state,
+        paymentMethod: action.payload
       }
     default:
         return state
   }
 }
-
-export default ticketReducer

@@ -1,4 +1,4 @@
-import {SELECT_TICKETS_INIT, SELECT_TICKETS_SUCCESS} from '../constants/ticketDispatcher'
+import {SELECT_TICKETS_INIT, SELECT_TICKETS_SUCCESS, CART_SAVE_PAYMENT_METHOD } from '../constants/ticketDispatcher'
 
 export const selectTickets = (qty) => async (dispatch, getState) => {
 
@@ -22,3 +22,13 @@ export const selectTickets = (qty) => async (dispatch, getState) => {
 
   localStorage.setItem('orderItem', JSON.stringify(getState()))
 }
+
+export const savePaymentMethod = (data) => (dispatch) => {
+  dispatch({
+    type: CART_SAVE_PAYMENT_METHOD,
+    payload: data
+  })
+  localStorage.setItem('paymentMethod', JSON.stringify(data))
+}
+
+

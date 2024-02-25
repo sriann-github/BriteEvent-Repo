@@ -1,82 +1,83 @@
 import {Modal, Row, Col, Container, Button, Card, Form} from 'react-bootstrap'
 import React, {useEffect, useState} from 'react'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import { useSelector, useDispatch} from 'react-redux'
 import CheckoutScreen from './CheckoutScreen'
-import {selectTickets} from '../actions/orderActions'
+import {selectTickets} from '../actions/ticketActions'
 
 const OrderScreen = (props) =>
 {
+  const dispatch = useDispatch()
+
   const [qty, setQty] = useState(0);
 
   const incrementCounter = () => {
     setQty(qty + 1);
   }
-
   const decrementCounter = () => {
     if (qty !== 0) {
       setQty(qty - 1);
     }
   }
 
+  const eventDetails = useSelector((state)=> state.eventDetails)
+  const {event} = eventDetails
+
   const [modalState, setModalState] = useState(false)
 
+  const checkoutHandler = () =>{
+    dispatch(selectTickets(qty))
+    setModalState(!modalState)
+  } 
   const toggleModal = () =>{
     setModalState(!modalState)
   } 
-
 
   return (
     <>
       <Modal 
         show={props.showModal} 
         onHide={props.closeModal}
-        size="xxl"
+        size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered>
         <Modal.Header closeButton>
-          <Modal.Title>
-            <h4>Event Heading</h4>
-          </Modal.Title>
+            <h4 className='modal-title w-100 text-center'>{event.name}</h4>
         </Modal.Header>
         <Modal.Body>
             <Container>              
-              <Row>
-                <Col>
-                  <Row>
+                  <Row className='mt-3'>
                     <Col>
-                      <Card>
-                        <h6>General Admission</h6>
-                        <div>
-                          <strong>$15</strong>              
-                        </div>
-                        <div>sales end on Mar 9, 2024</div>
-                      </Card>
+                        <h6 className='mb-0'>General Admission</h6>
                     </Col>
                     <Col>
-                      <div className="ticket-options" >
-                        <Button onClick={incrementCounter}>
-                          <i class="fa-sharp fa-solid fa-plus"></i>
-                        </Button>
-                        <span className="number">{qty}</span>
+                      <div className="ticket-options mb-1" >
                         <Button onClick={decrementCounter}>
                           <i class="fa-sharp fa-solid fa-minus"></i>
+                        </Button>
+                        <span className="number mx-3">{qty}</span>
+                        <Button onClick={incrementCounter}>
+                          <i class="fa-sharp fa-solid fa-plus"></i>
                         </Button>
                       </div>
                     </Col>
                   </Row>
-                </Col>              
-              </Row>
+                  <Row className='mb-3'>
+                    <Col>
+                      <strong>${event.price}</strong>              
+                      <div>sales end on Mar 9, 2024</div>
+                    </Col>
+                  </Row>
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleModal}>
+          <Button onClick={checkoutHandler}>
             Check Out
           </Button>
           <CheckoutScreen 
           showModal={modalState} 
           closeModal={toggleModal}
-          qty = {qty} />
+          />
         </Modal.Footer>
      </Modal>
     </>

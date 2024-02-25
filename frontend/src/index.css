@@ -19,6 +19,12 @@ code {
   justify-content: space-between;
 }
 
+.modal-body {
+  min-height:400px;
+  max-height:400px; 
+  overflow-y: auto;
+}
+
 .copyright{
   margin-top: 10px;
   font-size: 0.7em;

@@ -1,25 +1,16 @@
-import {Modal, Row, Col, Container, Button, Card, Form, InputGroup} from 'react-bootstrap'
-import React, {useEffect, useState} from 'react'
-import {useLocation, useNavigate, useParams} from 'react-router-dom'
-import { useSelector, useDispatch} from 'react-redux'
-import {selectTickets} from '../actions/orderActions'
-
-
+import {Modal, Row, Col, Container, Button, Form, InputGroup} from 'react-bootstrap'
+import React, {useState} from 'react'
+import {useNavigate, useParams} from 'react-router-dom'
+import { useDispatch, useSelector} from 'react-redux'
+import PlaceOrderScreen from './PlaceOrderScreen'
+import { savePaymentMethod } from '../actions/ticketActions'
 
 const CheckoutScreen = (props) => {
 
-  const [paymentMethod, setPaymentMethod] = useState('Paypal')
   const dispatch = useDispatch()
+  const [paymentMethod, setPaymentMethod] = useState('Paypal')
   const Navigate = useNavigate()
-  const location = useLocation()
   const params = useParams()
-  const eventId = params.id
- 
-  useEffect(() => {
-    if (eventId){
-      dispatch(selectTickets(eventId, props.qty))
-    }
-  }, [dispatch, params, eventId])
 
   
   const userLogin = useSelector((state) => state.userLogin)
@@ -31,26 +22,29 @@ const CheckoutScreen = (props) => {
       Navigate('/login')
     }
   }
+  const [modalState, setModalState] = useState(false)
+  const toggleModal = () =>{
+    dispatch(savePaymentMethod(paymentMethod))
+    setModalState(!modalState)
+  } 
 
   return (
     <>
       <Modal 
       show={props.showModal} 
       onHide={props.closeModal}
-      size="xxl"
+      size="lg"
       aria-labelledby="conatained-modal-title-vcenter"
       centered>
         <Modal.Header closeButton>
-          <Modal.Title>
-            <h4>Checkout</h4>
-          </Modal.Title>
+            <h4 className='modal-title w-100 text-center'>Checkout</h4>
         </Modal.Header>
         <Modal.Body>
           <Container>              
                 <Row>
                   <Col>
                   <Row>
-                    <h4>Billing Information</h4>
+                    <h5>Billing Information</h5>
                     <span>
                       <button>
                         Log in
@@ -117,7 +111,7 @@ const CheckoutScreen = (props) => {
                                 type='radio'
                                 label='Paypal'
                                 id='Paypal'
-                                value='Paypal'
+                                value={paymentMethod}
                                 name='paymentMethod'
                                 checked
                                 onChange={(e) => setPaymentMethod(e.target.value)}>
@@ -127,7 +121,7 @@ const CheckoutScreen = (props) => {
                               type='radio'
                               label='Credit Card'
                               id='CreditCard'
-                              value='CreditCard'
+                              value={paymentMethod}
                               name='paymentMethod'
                               checked
                               onChange={(e) => setPaymentMethod(e.target.value)}
@@ -143,13 +137,13 @@ const CheckoutScreen = (props) => {
           </Modal.Body>
         
         <Modal.Footer>         
-          <Row>
             <Button
-              variant="secondary" 
-              onClick={props.closeModal}>
+              onClick={toggleModal}>
                 Place Order
             </Button>
-          </Row>
+          <PlaceOrderScreen
+            showModal={modalState} 
+            closeModal={toggleModal}/>
         </Modal.Footer>
     </Modal>
     </>
