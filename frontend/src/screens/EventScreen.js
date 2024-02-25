@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import React, {useEffect, useState, useRef} from 'react'
+import {useNavigate, useParams} from 'react-router-dom'
 import { useSelector, useDispatch} from 'react-redux'
 import { Row, Container, ListGroup, Col, Carousel, ListGroupItem, Button } from 'react-bootstrap'
 import { eventDetailsAction } from '../actions/eventActions'
@@ -25,6 +25,14 @@ const EventScreen = () => {
   setModalState(!modalState)
  }
 
+ /*let token = useRef(false)
+
+ function handleClick(){
+  token.current = true
+  alert('value of token: ' + token.current);
+ }
+*/
+
   return (
     <>
      {
@@ -46,6 +54,7 @@ const EventScreen = () => {
         <Container fluid="xxl" className="px-md-5">
           <Row>
             <Col sm={8} className='me-3' >
+
               <ListGroup variant='flush' className="border border-0 ">     
                   <ListGroupItem className="border-0 mt-3 pb-0">
                     <h5> {event.startDate} </h5>
@@ -79,6 +88,7 @@ const EventScreen = () => {
                 disabled= {event.numTickets === 0}
                 onClick = {toggleModal}
                 ><span className='fw-semibold'>Get Tickets</span>
+
                 </Button>
                 <OrderScreen showModal={modalState} closeModal={toggleModal}></OrderScreen>
               </Row>

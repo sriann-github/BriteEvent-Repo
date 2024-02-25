@@ -1,5 +1,6 @@
-import {Modal, Row, Col, Container, Button, Form, InputGroup} from 'react-bootstrap'
-import React, {useState} from 'react'
+
+import {Modal, Row, Col, Container, Button, Card, Form, InputGroup} from 'react-bootstrap'
+import React, {useEffect, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 import PlaceOrderScreen from './PlaceOrderScreen'
@@ -16,20 +17,22 @@ const CheckoutScreen = (props) => {
   const userLogin = useSelector((state) => state.userLogin)
   const {userInfo} = userLogin
 
-  const promptUserLogin = () =>{
-    if(!userInfo)
-    {
-      Navigate('/login')
-    }
-  }
   const [modalState, setModalState] = useState(false)
   const toggleModal = () =>{
     dispatch(savePaymentMethod(paymentMethod))
     setModalState(!modalState)
   } 
 
+  /*const firstName = (typeof userInfo == "underfined")? "FN" : userInfo.name.split(' ')[0]
+  const lastName = (typeof userInfo == "underfined")? "LN" : userInfo.name.split(' ')[1]
+  const email = (typeof userInfo == "underfined")? "email": userInfo.email */
+
+  const firstName = "FN"
+  const lastName = "LN"
+  const email = "email"
+
   return (
-    <>
+    <>      
       <Modal 
       show={props.showModal} 
       onHide={props.closeModal}
@@ -59,13 +62,13 @@ const CheckoutScreen = (props) => {
                         <Col>
                         <Form.Control
                         label="First name"
-                        placeholder="First name"
+                        placeholder={firstName}
                         required />
                         </Col>
                         <Col>
                         <Form.Control
                         label="Last name"
-                        placeholder="Last name"
+                        placeholder={lastName}
                         required />
                         </Col>
                       </Row>
@@ -74,23 +77,19 @@ const CheckoutScreen = (props) => {
                         required
                         controlId="formGridEmail">
                           <Form.Label>Email</Form.Label>
-                          <Form.Control type="email" placeholder="Enter email" />
-                        </Form.Group>
-
-                        <Form.Group as={Col}
-                        required
-                        controlId="formGridEmail">
-                          <Form.Label>Confirm Email</Form.Label>
-                          <Form.Control type="email" placeholder="confirm email" />
-                        </Form.Group>
+                          <Form.Control type="email" placeholder={email} />
+                        </Form.Group>                        
                       </Row>
                       <Row>
                         <InputGroup className="mb-3">
-                          <InputGroup.Checkbox aria-label="Keep me updated on more events and news from this event organizer." />
+                          <InputGroup.Checkbox aria-label="Keep me updated on more events and news from this event organizer."
+                          placeholder = "Checkbox1" 
+                          />
                           <Form.Control aria-label="Keep me updated on more events and news from this event organizer."/>
                         </InputGroup>
                         <InputGroup className="mb-3">
-                          <InputGroup.Checkbox aria-label="Send me emails about the best events happening nearby or online." />
+                          <InputGroup.Checkbox aria-label="Send me emails about the best events happening nearby or online." 
+                          />
                           <Form.Control aria-label="Send me emails about the best events happening nearby or online." />
                         </InputGroup>
                       </Row>
@@ -146,7 +145,8 @@ const CheckoutScreen = (props) => {
             closeModal={toggleModal}/>
         </Modal.Footer>
     </Modal>
-    </>
+
+  </>
   );
 } 
 
