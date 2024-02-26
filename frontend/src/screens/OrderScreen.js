@@ -11,10 +11,10 @@ const OrderScreen = (props) =>
   const eventDetails = useSelector((state)=> state.eventDetails)
   const {event} = eventDetails
 
+  let closeOrderModal = useRef(false)
   const [qty, setQty] = useState(0);
   const userLogin = useSelector((state) => state.userLogin)
   const {userInfo} = userLogin
-  let userLoginPrompt = useRef(false)
 
   const incrementCounter = () => {
     setQty(qty + 1)
@@ -24,71 +24,70 @@ const OrderScreen = (props) =>
       setQty(qty - 1)
     }
   } 
-  const [checkoutModalState, setCheckoutModalState] = useState(false)
-
-  const toggleCheckoutModal = () =>{
-    dispatch(selectTickets(qty))
-  }
-
-  const checkUserInfo = () =>{
-    if(typeof userInfo === 'undefined')
-    {
-      userLoginPrompt.current = true
-      toggleLoginModal()
-    }
-  }
-  const userAlreadyLogggedIn = false
-  const checkoutControl = () => {
-    checkUserInfo()
-    if(userLoginPrompt === false)
-    {
-       userAlreadyLogggedIn = true
-    }
-    toggleCheckoutModal()
-    props.closeModal()
-  }
-
   const [loginModalState, setLoginModalState] = useState(false)
 
   const toggleLoginModal = () =>{
     setLoginModalState(!loginModalState)
   }
 
+  const [checkoutModalState, setCheckoutModalState] = useState(false)
+
+  const toggleCheckoutModal = () =>{
+    setCheckoutModalState(!checkoutModalState)
+  }
+  const checkoutControl = () => {
+    dispatch(selectTickets(qty))
+    if(!userInfo){
+      toggleLoginModal()
+    }else{
+      toggleCheckoutModal()
+    }
+    closeOrderModal.current = true
+  }
+
+
   return (
     <> 
-     {userLoginPrompt.current ? (<LoginModalComponent 
-      showLoginModal={loginModalState}
-      closeLoginModal={toggleLoginModal} />) : (
+      {closeOrderModal.current? (
+      <>
+      <LoginModalComponent 
+        showLoginModal={loginModalState}
+        closeLoginModal={toggleLoginModal} 
+      />
+      <CheckoutScreen 
+        showModal={checkoutModalState} 
+        closeModal={toggleCheckoutModal}
+      />
+      </>):(
       <Modal 
-        show={props.showModal}
+        show= {props.showModal}
         onHide={props.closeModal}
-        size="md"
-        aria-labelledby="contained-modal-title-vcenter"
+        size="lg"
         centered>
         <Modal.Header closeButton>
             <h4 className='modal-title w-100 text-center'>{event.name}</h4>          
         </Modal.Header>
         <Modal.Body>
+          <Row className='justify-content-md-center'>
+            <Col md={9}>
         <Row>
             <Image src={event.image} fluid />
           </Row> 
-            <Container>              
+            <Container className='border'>              
                   <Row className='mt-3'>
-                    <Col>
+                    <Col md={8} xs={7}>
                         <h6 className='mb-0'>General Admission</h6>
                     </Col>
-                    <Col>
-                    <Card>
+                    <Col md={4} xs={5}>
                       <div className="ticket-options" >
+                        <Button onClick={decrementCounter} disabled={qty===0}>
+                          <i class="fa-sharp fa-solid fa-minus"></i>
+                        </Button>
+                        <span className="number mx-3">{qty}</span>
                         <Button onClick={incrementCounter}>
                           <i class="fa-sharp fa-solid fa-plus"></i>
                         </Button>
-                        <span className="number">{qty}</span>
-                        <Button onClick={decrementCounter}>
-                          <i class="fa-sharp fa-solid fa-minus"></i>
-                        </Button>
                       </div>
-                    </Card>
                     </Col>
                   </Row>
                   <Row className='mb-3'>
@@ -98,16 +97,19 @@ const OrderScreen = (props) =>
                     </Col>
                   </Row>
           </Container>
+          </Col>
+          </Row>
         </Modal.Body>
        <Modal.Footer>
         <Button 
-          variant="secondary" 
-          onClick={checkoutControl}>
-            Check Out
+          variant="dark" 
+          onClick={checkoutControl}
+          disabled={qty===0}
+        > Check Out
         </Button>
-        {userAlreadyLogggedIn && <CheckoutScreen showModal={checkoutModalState} closeModal={toggleCheckoutModal}/>}
        </Modal.Footer >
-     </Modal> )
+     </Modal> 
+      )
     }
     </>
   );
