@@ -57,7 +57,8 @@ const OrderScreen = (props) =>
       <CheckoutScreen 
         showModal={checkoutModalState} 
         closeModal={toggleCheckoutModal}
-      /></>):(
+      />
+      </>):(
       <Modal 
         show= {props.showModal}
         onHide={props.closeModal}
@@ -67,23 +68,23 @@ const OrderScreen = (props) =>
             <h4 className='modal-title w-100 text-center'>{event.name}</h4>
         </Modal.Header>
         <Modal.Body>
-            <Container>              
+          <Row className='justify-content-md-center'>
+            <Col md={9}>
+            <Container className='border'>              
                   <Row className='mt-3'>
-                    <Col>
+                    <Col md={8} xs={7}>
                         <h6 className='mb-0'>General Admission</h6>
                     </Col>
-                    <Col>
-                    <Card>
+                    <Col md={4} xs={5}>
                       <div className="ticket-options" >
+                        <Button onClick={decrementCounter} disabled={qty===0}>
+                          <i class="fa-sharp fa-solid fa-minus"></i>
+                        </Button>
+                        <span className="number mx-3">{qty}</span>
                         <Button onClick={incrementCounter}>
                           <i class="fa-sharp fa-solid fa-plus"></i>
                         </Button>
-                        <span className="number">{qty}</span>
-                        <Button onClick={decrementCounter}>
-                          <i class="fa-sharp fa-solid fa-minus"></i>
-                        </Button>
                       </div>
-                    </Card>
                     </Col>
                   </Row>
                   <Row className='mb-3'>
@@ -93,11 +94,14 @@ const OrderScreen = (props) =>
                     </Col>
                   </Row>
           </Container>
+          </Col>
+          </Row>
         </Modal.Body>
        <Modal.Footer>
         <Button 
-          variant="secondary" 
+          variant="dark" 
           onClick={checkoutControl}
+          disabled={qty===0}
         > Check Out
         </Button>
        </Modal.Footer >

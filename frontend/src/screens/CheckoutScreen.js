@@ -1,6 +1,6 @@
 
 import {Modal, Row, Col, Container, Button, Form, InputGroup} from 'react-bootstrap'
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 import PlaceOrderScreen from './PlaceOrderScreen'
@@ -22,17 +22,12 @@ const CheckoutScreen = (props) => {
     setModalState(!modalState)
     closeCheckoutModal.current = true
   } 
-
-  /*const firstName = (typeof userInfo == "underfined")? "FN" : userInfo.name.split(' ')[0]
-  const lastName = (typeof userInfo == "underfined")? "LN" : userInfo.name.split(' ')[1]
-  const email = (typeof userInfo == "underfined")? "email": userInfo.email */
-
-  const firstName = "FN"
-  const lastName = "LN"
-  const email = "email"
+  const firstname = userInfo? userInfo.name.split(' ')[0]: " "
+  const lastname = userInfo? userInfo.name.split(' ')[1]: " "
+  const email = userInfo? userInfo.email: " "
 
   return (
-    <> {closeCheckoutModal.current? (          
+      <> {closeCheckoutModal.current? (          
       <PlaceOrderScreen
       showModal={modalState} 
       closeModal={toggleModal}/>
@@ -50,28 +45,22 @@ const CheckoutScreen = (props) => {
                   <Row>
                     <Col>
                     <Row>
-                      <h5>Billing Information</h5>
-                      <span>
-                        <button>
-                          Log in
-                        </button>
-                        for a faster experience.
-                      </span>
-                      <div>
-                        *Required
-                      </div>
+                      <h5 className='mb-0'>Billing Information</h5>
+                      <small>*Required</small>
                       <Form>
-                        <Row className="mb-3">
+                        <Row className="my-2">
                           <Col>
+                          <Form.Label>First name*</Form.Label>
                           <Form.Control
                           label="First name"
-                          placeholder={firstName}
+                          placeholder={firstname}
                           required />
                           </Col>
                           <Col>
+                          <Form.Label>Last name*</Form.Label>
                           <Form.Control
                           label="Last name"
-                          placeholder={lastName}
+                          placeholder={lastname}
                           required />
                           </Col>
                         </Row>
@@ -79,7 +68,7 @@ const CheckoutScreen = (props) => {
                           <Form.Group as={Col}
                           required
                           controlId="formGridEmail">
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label>Email*</Form.Label>
                             <Form.Control type="email" placeholder={email} />
                           </Form.Group>                        
                         </Row>
@@ -88,26 +77,18 @@ const CheckoutScreen = (props) => {
                             <InputGroup.Checkbox aria-label="Keep me updated on more events and news from this event organizer."
                             placeholder = "Checkbox1" 
                             />
-                            <Form.Control aria-label="Keep me updated on more events and news from this event organizer."/>
+                            <Form.Control placeholder="Keep me updated on more events and news from this event organizer."/>
                           </InputGroup>
                           <InputGroup className="mb-3">
                             <InputGroup.Checkbox aria-label="Send me emails about the best events happening nearby or online." 
                             />
-                            <Form.Control aria-label="Send me emails about the best events happening nearby or online." />
+                            <Form.Control placeholder="Send me emails about the best events happening nearby or online." />
                           </InputGroup>
                         </Row>
                         <Row>
-                          <Form.Group
-                            required
-                            controlId="cell phone">
-                            <Form.Label>cell phone</Form.Label>
-                            <Form.Control type="cell phone" placeholder="cell phone" />
-                          </Form.Group>
-                        </Row>
-                        <Row>
-                          <h4>Payment Method</h4>
+                          <h5>Payment Method</h5>
                           <Form.Group>
-                              <Form.Label as='legend'> Select Payment Method       </Form.Label>
+                              <Form.Label className='mb-0'> Select Payment Method</Form.Label>
                               <Col>
                                 <Form.Check
                                   type='radio'
@@ -125,7 +106,6 @@ const CheckoutScreen = (props) => {
                                 id='CreditCard'
                                 value={paymentMethod}
                                 name='paymentMethod'
-                                checked
                                 onChange={(e) => setPaymentMethod(e.target.value)}
                                 >
                               </Form.Check>

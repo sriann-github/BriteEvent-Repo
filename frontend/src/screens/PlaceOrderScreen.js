@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react'
 import {useNavigate } from 'react-router-dom'
-import { Modal, Button, Row, Col, ListGroup } from 'react-bootstrap'
+import { Modal, Button, Row, Col, ListGroup, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder } from '../actions/orderActions'
 import Message from '../Components/Message'
@@ -54,35 +54,39 @@ const PlaceOrderScreen = (props) => {
       centered
     >
       <Modal.Header closeButton>
-          <h4 className='modal-title w-100 text-center'>Order Summary</h4>
+          <h4 className='modal-title w-100 text-center'>{ticket.tickets.name}</h4>
       </Modal.Header>
       <Modal.Body>
-        <ListGroup variant='flush'>
-          <ListGroup.Item className='border-0'>
-            <h6>{ticket.tickets.name}</h6>
+          <Row className='justify-content-center'>
+            <Col xs={7}>
+        <ListGroup variant='flush' >
+          <ListGroup.Item className='border-0 pb-0 mt-3'>
+            <h6>Order Summary</h6>
           </ListGroup.Item>
           <ListGroup.Item>
             <Row>
-              <Col>{ticket.tickets.qty} x General Admission</Col>
-              <Col>${updatedTicket.itemsPrice}</Col>
+              <Col xs={9}>{ticket.tickets.qty} x General Admission</Col>
+              <Col xs={2}>${updatedTicket.itemsPrice}</Col>
             </Row>
           </ListGroup.Item>
           <ListGroup.Item>
             <Row>
-              <Col>Tax</Col>
-              <Col>${updatedTicket.taxPrice}</Col>
+              <Col xs={9}>Tax</Col>
+              <Col xs={2}>${updatedTicket.taxPrice}</Col>
             </Row>
           </ListGroup.Item>
           <ListGroup.Item className='border-0'>
             <Row>
-              <Col><strong>Total</strong></Col>
-              <Col><strong>${updatedTicket.totalPrice}</strong></Col>
+              <Col xs={9}><strong>Total</strong></Col>
+              <Col xs={2}><strong>${updatedTicket.totalPrice}</strong></Col>
             </Row>
           </ListGroup.Item>
           <ListGroup.Item>
             {error && <Message variant='danger'>{error}</Message>}
           </ListGroup.Item>
         </ListGroup>
+        </Col>
+        </Row>
       </Modal.Body>
         <Modal.Footer>
           <Button onClick={placeOrderHandler} disabled={ticket.tickets.qty === 0}>

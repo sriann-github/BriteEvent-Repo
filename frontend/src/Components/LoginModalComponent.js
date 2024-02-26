@@ -63,7 +63,7 @@ export const LoginModalComponent = (props) => {
                       onChange= {(e)=> setPassword(e.target.value)}
                     ></Form.Control>
                   </Form.Group>
-                  <Button type='Submit' variant='primary mt-2'>
+                  <Button type='Submit' variant='dark mt-2'>
                     Sign In
                   </Button>
               </Form>
