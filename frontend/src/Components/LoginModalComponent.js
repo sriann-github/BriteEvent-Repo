@@ -4,10 +4,7 @@ import { Link, useLocation  } from 'react-router-dom'
 import  {FormContainer}  from '../Components/FormContainer'
 import {login} from '../actions/userActions'
 import { useDispatch} from 'react-redux'
-import Message from '../Components/Message'
-import Loader from '../Components/Loader'
 import CheckoutScreen from '../screens/CheckoutScreen'
-
 
 export const LoginModalComponent = (props) => {
 
@@ -21,7 +18,6 @@ export const LoginModalComponent = (props) => {
     dispatch(login(email,password))
     showCheckout.current = true
     toggleCheckoutModal()
-    props.closeLoginModal()
   }
 
   const [email, setEmail] = useState('')
@@ -32,7 +28,6 @@ export const LoginModalComponent = (props) => {
   const toggleCheckoutModal = () =>{
     setCheckoutModalState(!checkoutModalState)
   }
-
  
   return (
     <>
@@ -43,17 +38,12 @@ export const LoginModalComponent = (props) => {
       (<Modal 
         show={props.showLoginModal}
         onHide= {props.closeLoginModal}
-        size="xxl"
-        aria-labelledby="conatained-modal-title-vcenter"
+        size="lg"
         centered>
-          <Modal.Header closeButton>
-            <Modal.Title>
-              <h4>Checkout</h4>
-            </Modal.Title>
-          </Modal.Header>
+          <Modal.Header closeButton></Modal.Header>
           <Modal.Body>
             <FormContainer>
-              <h1>Sign In</h1>           
+              <h2>Sign In</h2>           
               <Form onSubmit={submitHandler}>
                   <Form.Group controlId='email'>
                     <Form.Label>Email Address</Form.Label>
@@ -73,7 +63,7 @@ export const LoginModalComponent = (props) => {
                       onChange= {(e)=> setPassword(e.target.value)}
                     ></Form.Control>
                   </Form.Group>
-                  <Button type='Submit' variant='primary'>
+                  <Button type='Submit' variant='dark mt-2'>
                     Sign In
                   </Button>
               </Form>
