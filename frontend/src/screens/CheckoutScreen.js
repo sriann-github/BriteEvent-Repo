@@ -21,15 +21,11 @@ const CheckoutScreen = (props) => {
   const toggleModal = () =>{
     dispatch(savePaymentMethod(paymentMethod))
     setModalState(!modalState)
-  } 
+  }
 
-  /*const firstName = (typeof userInfo == "underfined")? "FN" : userInfo.name.split(' ')[0]
-  const lastName = (typeof userInfo == "underfined")? "LN" : userInfo.name.split(' ')[1]
-  const email = (typeof userInfo == "underfined")? "email": userInfo.email */
-
-  const firstName = "FN"
-  const lastName = "LN"
-  const email = "email"
+  const firstName = (typeof userInfo == "undefined")? "FN" : userInfo.name.split(' ')[0]
+  const lastName = (typeof userInfo == "undefined")? "LN" : userInfo.name.split(' ')[1]
+  const email = (typeof userInfo == "undefined")? "email": userInfo.email
 
   return (
     <>      
@@ -47,29 +43,24 @@ const CheckoutScreen = (props) => {
                 <Row>
                   <Col>
                   <Row>
-                    <h5>Billing Information</h5>
-                    <span>
-                      <button>
-                        Log in
-                      </button>
-                      for a faster experience.
-                    </span>
-                    <div>
-                      *Required
-                    </div>
+                    <h5>Billing Information</h5>                                 
                     <Form>
                       <Row className="mb-3">
                         <Col>
-                        <Form.Control
-                        label="First name"
-                        placeholder={firstName}
-                        required />
+                        <Form.Group as={Col}
+                         required
+                         controlId="formGridEmail">
+                          <Form.Label>First name</Form.Label>
+                          <Form.Control type="email" placeholder={firstName} />
+                        </Form.Group>                        
                         </Col>
                         <Col>
-                        <Form.Control
-                        label="Last name"
-                        placeholder={lastName}
-                        required />
+                        <Form.Group as={Col}
+                         required
+                         controlId="formGridEmail">
+                          <Form.Label>Last name</Form.Label>
+                          <Form.Control type="email" placeholder={lastName} />
+                        </Form.Group>       
                         </Col>
                       </Row>
                       <Row className="mb-3">
@@ -81,23 +72,24 @@ const CheckoutScreen = (props) => {
                         </Form.Group>                        
                       </Row>
                       <Row>
-                        <InputGroup className="mb-3">
-                          <InputGroup.Checkbox aria-label="Keep me updated on more events and news from this event organizer."
-                          placeholder = "Checkbox1" 
-                          />
-                          <Form.Control aria-label="Keep me updated on more events and news from this event organizer."/>
-                        </InputGroup>
-                        <InputGroup className="mb-3">
-                          <InputGroup.Checkbox aria-label="Send me emails about the best events happening nearby or online." 
-                          />
-                          <Form.Control aria-label="Send me emails about the best events happening nearby or online." />
-                        </InputGroup>
+                      <Form.Check
+                        type="checkbox"
+                        id="autoSizingCheck2"
+                        label="Keep me updated on more events and news from this event organizer."
+                      />
+                      <Form.Check
+                        type="checkbox"
+                        id="autoSizingCheck2"
+                        label="Send me emails about the best events happening nearby or online." 
+                      />
                       </Row>
                       <Row>
                         <Form.Group
                           required
                           controlId="cell phone">
-                          <Form.Label>cell phone</Form.Label>
+                          <Form.Label>
+                           <strong>cell phone </strong>                          
+                          </Form.Label>
                           <Form.Control type="cell phone" placeholder="cell phone" />
                         </Form.Group>
                       </Row>

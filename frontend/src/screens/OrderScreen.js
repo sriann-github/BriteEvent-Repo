@@ -1,4 +1,4 @@
-import {Modal, Row, Col, Container, Button, Card } from 'react-bootstrap'
+import {Modal, Row, Col, Container, Button, Card, Image } from 'react-bootstrap'
 import React, {useState, useRef} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import CheckoutScreen from './CheckoutScreen'
@@ -62,13 +62,16 @@ const OrderScreen = (props) =>
       <Modal 
         show={props.showModal}
         onHide={props.closeModal}
-        size="lg"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered>
         <Modal.Header closeButton>
-            <h4 className='modal-title w-100 text-center'>{event.name}</h4>
+            <h4 className='modal-title w-100 text-center'>{event.name}</h4>          
         </Modal.Header>
         <Modal.Body>
+        <Row>
+            <Image src={event.image} fluid />
+          </Row> 
             <Container>              
                   <Row className='mt-3'>
                     <Col>
